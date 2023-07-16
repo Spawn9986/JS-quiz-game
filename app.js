@@ -2,12 +2,13 @@ const statementContainer = document.querySelector(".statement");
 const buttons = document.querySelectorAll(".options button");
 const explanationContainer = document.querySelector(".explanation");
 
-const obj = {
-  statement: "Arrays are primitive values",
-  answer: false,
-  explanation:
-    "In JavaScript, a primitive (primitive value, primitive data type) is data that is not an object (arrays are objects) and has no methods or properties",
-};
+async function fetchData() {
+    const res = await fetch(
+      "https://opentdb.com/api.php?amount=1&difficulty=easy&type=boolean"
+    );
+    const resObj = await res.json();
+    console.log(resObj);
+  }
 
 function isCorrect(guess) {
   if (guess.value === obj.answer.toString()) {
@@ -27,6 +28,8 @@ for (let button of buttons) {
     isCorrect(e.target);
   });
 }
+
+fetchData();
 
 // What I learned from this project:
 // You cant add eventlisteners to node list but you can iterate over a node list like an array and add event listeners to each one in the loop individually
