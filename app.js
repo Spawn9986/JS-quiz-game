@@ -11,8 +11,8 @@ const obj = {
 
 function isCorrect(guess) {
   if (guess.value === obj.answer.toString()) {
-    console.log("true");
-  } else console.log("false");
+    guess.classList.add("correct");
+  } else guess.classList.add("incorrect");
 }
 
 statementContainer.innerText = obj.statement;
