@@ -17,7 +17,7 @@ main {
   flex-direction: column;
 }
 
-#statement {
+.statement {
   border: 1px solid black;
   border-radius: 0.5rem;
   box-shadow: 5px 5px 5px gray;
@@ -28,12 +28,12 @@ main {
   min-height: 2em;
 }
 
-#explanation {
+.explanation {
   padding: 1rem;
   text-align: center;
 }
 
-#options {
+.options {
   width: 100%;
   display: flex;
   flex-direction: column;
