@@ -19,11 +19,14 @@ statementContainer.innerText = obj.statement;
 
 for (let button of buttons) {
   button.addEventListener("click", function (e) {
+    for (let button of buttons) {
+      button.setAttribute("disabled", "");
+    }
+    explanationContainer.innerText = obj.explanation;
+
     isCorrect(e.target);
   });
 }
-
-//button.setAttribute("disabled", "");
 
 // What I learned from this project:
 // You cant add eventlisteners to node list but you can iterate over a node list like an array and add event listeners to each one in the loop individually
