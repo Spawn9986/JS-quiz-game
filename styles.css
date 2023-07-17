@@ -2,23 +2,28 @@ body {
   margin: 1rem auto;
   padding: 3rem;
   font-family: sans-serif;
+  background-image: url("https://media1.thehungryjpeg.com/thumbs2/ori_3904533_lvplisloh273mr4n45caua17xb97mgf9t5mq1yy5_neon-quiz-sign-glow-question-mark-and-lighting-frame-party-led-banne.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 header {
-  width: 50%;
-  margin: 1em auto;
+  width: 40%;
+  margin: 25em 42em 0 auto;
+  color: white;
+  text-align: center;
 }
 
 main {
   min-width: 25rem;
-  max-width: 50%;
-  margin: 0px auto;
+  max-width: 40%;
+  margin: 0px 40em 0 auto;
   display: flex;
   flex-direction: column;
 }
 
 .statement {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 0.5rem;
   box-shadow: 5px 5px 5px gray;
   padding: 1rem;
@@ -26,6 +31,7 @@ main {
   text-align: center;
   margin: 1rem 0px;
   min-height: 2em;
+  color: white;
 }
 
 .explanation {
@@ -40,9 +46,10 @@ main {
 }
 
 button {
-  padding: 0.5rem;
+  padding: 0.7rem;
   font-size: medium;
-  border-radius: 5px;
+  border-radius: 50px;
+  font-size: large;
 }
 
 .correct {
@@ -51,4 +58,18 @@ button {
 
 .incorrect {
   background-color: lightpink;
+}
+
+label {
+  color: white;
+}
+
+input {
+  padding: 1rem;
+  font-size: large;
+}
+
+select {
+  padding: 1rem;
+  font-size: large;
 }
