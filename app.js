@@ -1,6 +1,7 @@
 const statementContainer = document.querySelector(".statement");
 const buttons = Array.from(document.querySelectorAll("button"));
 const play = document.querySelector(".play");
+const nextBtn = document.querySelector(".next");
 console.log(buttons);
 
 play.addEventListener("click", function () {
