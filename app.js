@@ -40,6 +40,9 @@ play.addEventListener("click", async function () {
 
 nextBtn.addEventListener("click", function () {
   currentQuestionIndex++;
+  for (let button of buttons) {
+    button.removeAttribute("disabled");
+  }
 
   if (currentQuestionIndex < currentResults.length) {
     const statement = decodeHtmlEntities(
@@ -57,18 +60,23 @@ nextBtn.addEventListener("click", function () {
 for (let i = 1; i < 3; i++) {
   buttons[i].addEventListener("click", function (e) {
     //now disable all buttons once clicked
-    /* for (let button of buttons) {
-        button.setAttribute("disabled", "");
-      } */
+    for (let j = 0; j < 3; j++) {
+      buttons[j].setAttribute("disabled", "");
+    }
     isCorrect(e.target);
   });
 }
 
 //check users guess against correct answer from returned API results
 async function isCorrect(guess) {
-  const correctAnswer = currentResults.correct_answer.toString().toLowerCase();
+  const correctAnswer = currentResults[currentQuestionIndex].correct_answer
+    .toString()
+    .toLowerCase();
   console.log("users guess:", guess.value, "correct answer:", correctAnswer);
-  if (guess.value === currentResults.correct_answer.toString().toLowerCase()) {
+  if (
+    guess.value ===
+    currentResults[currentQuestionIndex].correct_answer.toString().toLowerCase()
+  ) {
     guess.classList.add("correct");
   } else guess.classList.add("incorrect");
 }
