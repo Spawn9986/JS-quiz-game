@@ -14,6 +14,8 @@ async function fetchData() {
   const category = Array.from(document.querySelectorAll("select"))[0].value;
   const difficulty = Array.from(document.querySelectorAll("select"))[1].value;
 
+  console.log(category, difficulty);
+
   const res = await fetch(
     `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=boolean`
   );
@@ -26,17 +28,20 @@ async function fetchData() {
 }
 
 play.addEventListener("click", async function () {
-  buttons[0].setAttribute("disabled", "");
   for (let i = 1; i < buttons.length; i++) {
     buttons[i].removeAttribute("disabled");
   }
+
+  buttons[0].setAttribute("disabled", "");
+  buttons[3].setAttribute("disabled", "");
+
   currentResults = await fetchData();
   //reset the current question index
   currentQuestionIndex = 0;
 
   //grab statement out of API fetched object. Since the returned statement's HTML has entities (i.e., &quot;) we need to ensure that the HTML entities are correctly converted into their corresponding characters before rendering the text.
   const statement = decodeHtmlEntities(
-    currentResults[currentQuestionIndex].question
+    currentResults[currentQuestionIndex]?.question
   );
 
   //adds the statement from API fetch to statement container on screen
@@ -44,10 +49,17 @@ play.addEventListener("click", async function () {
 });
 
 nextBtn.addEventListener("click", function () {
-  currentQuestionIndex++;
+  if (currentQuestionIndex <= currentResults.length - 1) {
+    currentQuestionIndex++;
+  } else
+    for (let i = 0; i < 4; i++) {
+      buttons[i].setAttribute("disabled", "");
+    }
+
   for (let i = 1; i < buttons.length; i++) {
     buttons[i].removeAttribute("disabled");
   }
+  buttons[3].setAttribute("disabled", "");
   for (let button of buttons) {
     button.classList.remove("correct", "incorrect");
     // Could have also written: .remove((className) => className.includes("correct"))
@@ -73,6 +85,7 @@ for (let i = 1; i < 3; i++) {
       buttons[j].setAttribute("disabled", "");
     }
     isCorrect(e.target);
+    buttons[3].removeAttribute("disabled");
   });
 }
 
@@ -116,6 +129,8 @@ function startState() {
     // Could have also written: .remove((className) => className.includes("correct"))
   }
 }
+
+startState();
 
 // What I learned from this project:
 // You cant add eventlisteners to node list but you can iterate over a node list like an array and add event listeners to each one in the loop individually
