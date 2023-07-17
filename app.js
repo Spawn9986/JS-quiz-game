@@ -5,6 +5,7 @@ const nextBtn = document.querySelector(".next");
 //store the current results from API fetch so that I dont make an API fetch each time I call a function etc
 let currentResults;
 let currentQuestionIndex = 0;
+const startOver = document.querySelector(".startOver");
 
 console.log(buttons);
 
@@ -91,6 +92,14 @@ function decodeHtmlEntities(text) {
   element.innerHTML = text;
   return element.textContent || element.innerText;
 }
+
+startOver.addEventListener("click", function () {
+  buttons[0].removeAttribute("disabled");
+  for (let i = 1; i < buttons.length; i++) {
+    buttons[i].setAttribute("disabled", "");
+  }
+  statementContainer.innerText = "";
+});
 
 // What I learned from this project:
 // You cant add eventlisteners to node list but you can iterate over a node list like an array and add event listeners to each one in the loop individually
