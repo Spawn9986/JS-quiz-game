@@ -6,6 +6,7 @@ const nextBtn = document.querySelector(".next");
 let currentResults;
 let currentQuestionIndex = 0;
 const startOver = document.querySelector(".startOver");
+let score = 0;
 
 console.log(buttons);
 
@@ -115,6 +116,7 @@ startOver.addEventListener("click", function () {
 });
 
 function startState() {
+  score = 0;
   currentQuestionIndex = 0;
   buttons[0].removeAttribute("disabled");
 
