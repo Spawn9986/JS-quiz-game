@@ -34,17 +34,24 @@ function addStatement(statement) {
 
 //only index 1-2 bc only wanted event listener on true & False buttons
 for (let i = 1; i < 3; i++) {
-  buttons[i].addEventListener("click", function () {
+  buttons[i].addEventListener("click", function (e) {
     //now disable all buttons once clicked
     for (let button of buttons) {
       button.setAttribute("disabled", "");
     }
+    isCorrect(e.target);
   });
 }
 
 nextBtn.addEventListener("click", function () {
   console.log("clicked nextBtn");
 });
+
+async function isCorrect(guess) {
+  if (guess.value === results.correct_answer.toString()) {
+    console.log("true");
+  } else console.log("false");
+}
 
 // What I learned from this project:
 // You cant add eventlisteners to node list but you can iterate over a node list like an array and add event listeners to each one in the loop individually
