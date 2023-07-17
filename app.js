@@ -2,6 +2,7 @@ const statementContainer = document.querySelector(".statement");
 const buttons = Array.from(document.querySelectorAll("button"));
 const play = document.querySelector(".play");
 const nextBtn = document.querySelector(".next");
+let currentResults;
 
 console.log(buttons);
 
@@ -21,10 +22,10 @@ async function fetchData() {
 }
 
 play.addEventListener("click", async function () {
-  const results = await fetchData();
+  currentResults = await fetchData();
 
   //grab statement out of API fetched object. Since the returned statement's HTML has entities (i.e., &quot;) we need to ensure that the HTML entities are correctly converted into their corresponding characters before rendering the text.
-  const statement = decodeHtmlEntities(results.question);
+  const statement = decodeHtmlEntities(currentResults.question);
 
   //adds the statement from API fetch to statement container on screen
   statementContainer.innerText = statement;
@@ -49,11 +50,11 @@ for (let i = 1; i < 3; i++) {
 
 //check users guess against correct answer from returned API results
 async function isCorrect(guess) {
-  const results = await fetchData();
-  
-  if (guess.value === results.correct_answer.toString().toLowerCase()) {
-    console.log("true");
-  } else console.log("false");
+  const correctAnswer = currentResults.correct_answer.toString().toLowerCase();
+  console.log("users guess:", guess.value, "correct answer:", correctAnswer);
+  if (guess.value === currentResults.correct_answer.toString().toLowerCase()) {
+    guess.classList.add("correct");
+  } else guess.classList.add("incorrect");
 }
 
 function decodeHtmlEntities(text) {
