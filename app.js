@@ -40,8 +40,8 @@ play.addEventListener("click", async function () {
 
 nextBtn.addEventListener("click", function () {
   currentQuestionIndex++;
-  for (let button of buttons) {
-    button.removeAttribute("disabled");
+  for (let i = 1; i < buttons.length; i++) {
+    buttons[i].removeAttribute("disabled");
   }
   for (let button of buttons) {
     button.classList.remove("correct", "incorrect");
