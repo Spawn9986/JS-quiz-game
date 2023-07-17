@@ -1,6 +1,6 @@
-let statementContainer = document.querySelector(".statement");
-let buttons = Array.from(document.querySelectorAll("button"));
-let category = document.que
+const statementContainer = document.querySelector(".statement");
+const buttons = Array.from(document.querySelectorAll("button"));
+const play = document.querySelector(".play");
 
 async function fetchData() {
   const res = await fetch(
