@@ -1,6 +1,15 @@
 const statementContainer = document.querySelector(".statement");
 const buttons = Array.from(document.querySelectorAll("button"));
+const numOfQuestions = document.querySelector("input.value");
+const difficulty = Array.from(document.querySelectorAll("select"))[1].value;
+const category = Array.from(document.querySelectorAll("select"))[0].value;
 const play = document.querySelector(".play");
+
+play.addEventListener("click", function () {
+  const difficulty = Array.from(document.querySelectorAll("select"))[1].value;
+  const category = Array.from(document.querySelectorAll("select"))[0].value;
+  console.log(category, difficulty);
+});
 
 async function fetchData() {
   const res = await fetch(
