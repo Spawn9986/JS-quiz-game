@@ -43,6 +43,10 @@ nextBtn.addEventListener("click", function () {
   for (let button of buttons) {
     button.removeAttribute("disabled");
   }
+  for (let button of buttons) {
+    button.classList.remove("correct", "incorrect");
+    // Could have also written: .remove((className) => className.includes("correct"))
+  }
 
   if (currentQuestionIndex < currentResults.length) {
     const statement = decodeHtmlEntities(
