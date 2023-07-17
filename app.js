@@ -23,12 +23,11 @@ async function fetchData() {
 play.addEventListener("click", async function () {
   const results = await fetchData();
 
-  //grab statement out of API fetched object
+  //grab statement out of API fetched object. Since the returned statement's HTML has entities (i.e., &quot;) we need to ensure that the HTML entities are correctly converted into their corresponding characters before rendering the text.
   const statement = decodeHtmlEntities(results.question);
-  console.log(statement);
 
   //adds the statement from API fetch to statement container on screen
-  statementContainer.innerHTML = statement;
+  statementContainer.innerText = statement;
 });
 
 //============ SUPPORTING FUNCTIONS ==========
@@ -56,8 +55,8 @@ async function isCorrect(guess) {
   } else console.log("false");
 }
 
-// Function to decode HTML entities
 function decodeHtmlEntities(text) {
+  //create a temporary div element to parse and decode HTML entities from a known and trusted source (API fetch)
   const element = document.createElement("div");
   element.innerHTML = text;
   return element.textContent || element.innerText;
@@ -67,3 +66,4 @@ function decodeHtmlEntities(text) {
 // You cant add eventlisteners to node list but you can iterate over a node list like an array and add event listeners to each one in the loop individually
 // Type comparisons; trying to compare the inner text of event.target with a boolean from an object;
 // async await for example getting the returned value of results from  fetchData() to use within play.addEventListener("click", function () {...}: I had to add async and await to the addEventListener function
+//using innerHTML: needs to be decoded and then sanitized (if from user-generated or untrusted content). Sanization measures may include input validation, output encoding, and content sanitization.
