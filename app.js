@@ -43,14 +43,15 @@ for (let i = 1; i < 3; i++) {
     /* for (let button of buttons) {
         button.setAttribute("disabled", "");
       } */
-    isCorrect(e.target, results);
+    isCorrect(e.target);
   });
 }
 
 //check users guess against correct answer from returned API results
 async function isCorrect(guess) {
   const results = await fetchData();
-  if (guess.value === results.correct_answer.toString()) {
+  
+  if (guess.value === results.correct_answer.toString().toLowerCase()) {
     console.log("true");
   } else console.log("false");
 }
