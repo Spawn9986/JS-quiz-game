@@ -26,6 +26,10 @@ async function fetchData() {
 }
 
 play.addEventListener("click", async function () {
+  buttons[0].setAttribute("disabled", "");
+  for (let i = 1; i < buttons.length; i++) {
+    buttons[i].removeAttribute("disabled");
+  }
   currentResults = await fetchData();
   //reset the current question index
   currentQuestionIndex = 0;
@@ -94,12 +98,24 @@ function decodeHtmlEntities(text) {
 }
 
 startOver.addEventListener("click", function () {
+  startState();
+});
+
+function startState() {
+  currentQuestionIndex = 0;
   buttons[0].removeAttribute("disabled");
+
   for (let i = 1; i < buttons.length; i++) {
     buttons[i].setAttribute("disabled", "");
   }
+
   statementContainer.innerText = "";
-});
+
+  for (let button of buttons) {
+    button.classList.remove("correct", "incorrect");
+    // Could have also written: .remove((className) => className.includes("correct"))
+  }
+}
 
 // What I learned from this project:
 // You cant add eventlisteners to node list but you can iterate over a node list like an array and add event listeners to each one in the loop individually
