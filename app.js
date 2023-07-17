@@ -1,6 +1,7 @@
 const statementContainer = document.querySelector(".statement");
 const buttons = Array.from(document.querySelectorAll("button"));
 const play = document.querySelector(".play");
+console.log(buttons);
 
 play.addEventListener("click", function () {
   fetchData();
@@ -17,16 +18,27 @@ async function fetchData() {
 
   const resObj = await res.json();
   const results = resObj.results[0];
+  //grab statement out of API fetched object
   const statement = results.question;
   console.log(results);
-  console.log(statement);
 
+  //adds the statement from API fetch to statement container on screen
   addStatement(statement);
   return results;
 }
 
 function addStatement(statement) {
   statementContainer.textContent = statement;
+}
+
+//only index 1-2 bc only wanted event listener on true & False buttons
+for (let i = 1; i < 3; i++) {
+  buttons[i].addEventListener("click", function () {
+    //now disable all buttons once clicked
+    for (let button of buttons) {
+      button.setAttribute("disabled", "");
+    }
+  });
 }
 
 // What I learned from this project:
