@@ -10,14 +10,23 @@ async function fetchData() {
   const numOfQuestions = document.querySelector("input").value;
   const category = Array.from(document.querySelectorAll("select"))[0].value;
   const difficulty = Array.from(document.querySelectorAll("select"))[1].value;
-  console.log(numOfQuestions);
+
   const res = await fetch(
     `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=boolean`
   );
+
   const resObj = await res.json();
   const results = resObj.results[0];
+  const statement = results.question;
   console.log(results);
+  console.log(statement);
+
+  addStatement(statement);
   return results;
+}
+
+function addStatement(statement) {
+  statementContainer.textContent = statement;
 }
 
 // What I learned from this project:
