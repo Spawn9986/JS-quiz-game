@@ -11,7 +11,7 @@
 <h2>Project Screenshots:</h2>
 
 <div align="center">
-<img src="https://github.com/Spawn9986/wordle-clone/blob/main/Pics/Wordle%20Screenshot.png" alt="project-flow-chart" width="436" height="547"/>
+<img src="https://github.com/Spawn9986/quiz-game/blob/main/screenshot/JS%20Quiz%20game.png" alt="project-flow-chart" width="436" height="547"/>
 </div>
 
 <h2>💻 Built with</h2>
