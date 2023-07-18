@@ -1,6 +1,6 @@
 body {
-  margin: 1rem auto;
-  padding: 3rem;
+  margin: 0 auto;
+  padding: 0;
   font-family: sans-serif;
   background-image: url("https://media1.thehungryjpeg.com/thumbs2/ori_3904533_lvplisloh273mr4n45caua17xb97mgf9t5mq1yy5_neon-quiz-sign-glow-question-mark-and-lighting-frame-party-led-banne.jpg");
   background-size: cover;
@@ -9,7 +9,7 @@ body {
 
 header {
   width: 40%;
-  margin: 25em 42em 0 auto;
+  margin: 15em 42em 6em auto;
   color: white;
   text-align: center;
 }
@@ -72,70 +72,4 @@ input {
 select {
   padding: 1rem;
   font-size: large;
-}
-
-/* Media query for screens smaller than 768px (e.g., mobile devices) */
-
-@media (max-width: 767px) {
-  header {
-    width: 80%;
-    margin: 3em auto 0;
-  }
-
-  main {
-    max-width: 80%;
-    margin: 0 auto;
-  }
-
-  .statement {
-    font-size: large;
-  }
-
-  button {
-    font-size: medium;
-  }
-}
-
-/* Media query for screens between 768px and 1023px (e.g., tablets) */
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  header {
-    width: 60%;
-    margin: 10em auto 0;
-  }
-
-  main {
-    max-width: 60%;
-    margin: 0 auto;
-  }
-
-  .statement {
-    font-size: large;
-  }
-
-  button {
-    font-size: medium;
-  }
-}
-
-/* Media query for screens larger than 1023px (e.g., desktops) */
-
-@media (min-width: 1024px) {
-  header {
-    width: 40%;
-    margin: 25em 42em 0 auto;
-  }
-
-  main {
-    max-width: 40%;
-    margin: 0px 40em 0 auto;
-  }
-
-  .statement {
-    font-size: x-large;
-  }
-
-  button {
-    font-size: large;
-  }
 }
